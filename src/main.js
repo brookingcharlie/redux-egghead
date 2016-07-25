@@ -1,6 +1,7 @@
-import store from '../src/store';
+import {createStore} from 'redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import counterReducer from '../src/counterReducer';
 
 const Counter = ({value, onIncrement, onDecrement}) => (
   <div>
@@ -9,7 +10,7 @@ const Counter = ({value, onIncrement, onDecrement}) => (
     <button onClick={onDecrement}>Decrement</button>
   </div>
 );
-
+const store = createStore(counterReducer);
 const render = () => {
   ReactDOM.render(
     <Counter
