@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 
 const Counter = ({value, onIncrement, onDecrement}) => (
   <div>
-    <h1>{value}</h1>
-    <button onClick={onIncrement}>Increment</button>
-    <button onClick={onDecrement}>Decrement</button>
+    <h1 className="value">{value}</h1>
+    <button className="increment" onClick={onIncrement}>Increment</button>
+    <button className="decrement" onClick={onDecrement}>Decrement</button>
   </div>
 );
 

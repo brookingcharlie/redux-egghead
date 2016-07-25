@@ -1,5 +1,5 @@
-import {expect} from 'chai'
-import counterReducer from '../src/counterReducer'
+import {expect} from 'chai';
+import counterReducer from '../src/counterReducer';
 
 describe('counterReducer', () => {
   it('should increment', () => {
