@@ -13,14 +13,14 @@ describe('TodoApp', () => {
 
   describe('renders markup', () => {
     it('for empty todo list', () => {
-      const component = shallow(<TodoApp todos={[]} />);
+      const component = shallow(<TodoApp todos={[]} visibility="SHOW_ALL" />);
       expect(component.find('input')).to.have.length(1);
       expect(component.find('button')).to.have.length(1);
       expect(component.find('li')).to.have.length(0);
     });
 
     it('for non-empty todo list', () => {
-      const component = shallow(<TodoApp todos={todos} />);
+      const component = shallow(<TodoApp todos={todos} visibility="SHOW_ALL" />);
       expect(component.find('input')).to.have.length(1);
       expect(component.find('button')).to.have.length(1);
       expect(component.find('li')).to.have.length(3);
@@ -36,14 +36,14 @@ describe('TodoApp', () => {
   // Disabled: Enzyme shallow rendering does not support refs
   xit('invokes callback when todo added', () => {
     const onAdd = sinon.spy();
-    const component = shallow(<TodoApp todos={todos} onAdd={onAdd} />);
+    const component = shallow(<TodoApp todos={todos} visibility="SHOW_ALL" onAdd={onAdd} />);
     component.find('button').simulate('click');
     expect(onAdd).to.have.been.called;
   });
 
   it('invokes callback when todo toggled', () => {
     const onToggle = sinon.spy();
-    const component = shallow(<TodoApp todos={todos} onToggle={onToggle} />);
+    const component = shallow(<TodoApp todos={todos} visibility="SHOW_ALL" onToggle={onToggle} />);
     component.find('li').at(1).simulate('click');
     expect(onToggle).to.have.been.called;
   });
