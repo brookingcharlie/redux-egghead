@@ -5,6 +5,8 @@ import counterReducer from './counterReducer';
 import Counter from './Counter';
 
 const store = createStore(counterReducer);
+
+// Update the DOM in response to current application state
 const render = () => {
   ReactDOM.render(
     <Counter
@@ -15,6 +17,9 @@ const render = () => {
     document.getElementById('root')
   );
 };
+
+// Render whenever store changes
 store.subscribe(render);
 
+// Render initial state
 render();

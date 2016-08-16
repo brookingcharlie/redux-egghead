@@ -2,13 +2,13 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  entry: [
-    'babel-polyfill',
-    './src/main.js'
-  ],
+  entry: {
+    counter: ['babel-polyfill', './src/main-counter.js'],
+    todo: ['babel-polyfill', './src/main-todo.js']
+  },
   output: {
     path: path.join(__dirname, 'build'),
-    filename: 'bundle.js'
+    filename: '[name].js'
   },
   module: {
     loaders: [{
