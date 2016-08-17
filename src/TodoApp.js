@@ -16,11 +16,11 @@ class TodoApp extends React.Component {
       <div>
         <input ref={(node) => {this.input = node;}} />
         <button onClick={() => {
-	  this.props.onAddTodo(this.input.value);
-	  this.input.value = '';
-	}}>Add todo</button>
-	<ul>
-	  {visibleTodos.map(todo =>
+          this.props.onAddTodo(this.input.value);
+          this.input.value = '';
+        }}>Add todo</button>
+        <ul>
+          {visibleTodos.map(todo =>
             <li
                 key={todo.id}
                 className={todo.completed ? 'completed' : ''}
@@ -28,24 +28,24 @@ class TodoApp extends React.Component {
               {todo.text}
             </li>
           )}
-	</ul>
+        </ul>
         <p>
           Show:{' '}
           <FilterLink
               filter="SHOW_ALL"
               currentFilter={this.props.visibility}
-	      onClick={this.props.onSetVisibilityFilter}
-	    >All</FilterLink>{' '}
+              onClick={this.props.onSetVisibilityFilter}
+            >All</FilterLink>{' '}
           <FilterLink
-	      filter="SHOW_ACTIVE"
-	      currentFilter={this.props.visibility}
-	      onClick={this.props.onSetVisibilityFilter}
-	    >Active</FilterLink>{' '}
+              filter="SHOW_ACTIVE"
+              currentFilter={this.props.visibility}
+              onClick={this.props.onSetVisibilityFilter}
+            >Active</FilterLink>{' '}
           <FilterLink
-	      filter="SHOW_COMPLETED"
-	      currentFilter={this.props.visibility}
-	      onClick={this.props.onSetVisibilityFilter}
-	    >Completed</FilterLink>
+              filter="SHOW_COMPLETED"
+              currentFilter={this.props.visibility}
+              onClick={this.props.onSetVisibilityFilter}
+            >Completed</FilterLink>
         </p>
       </div>
     );
