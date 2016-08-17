@@ -35,16 +35,16 @@ describe('TodoApp', () => {
 
   // Disabled: Enzyme shallow rendering does not support refs
   xit('invokes callback when todo added', () => {
-    const onAdd = sinon.spy();
-    const component = shallow(<TodoApp todos={todos} visibility="SHOW_ALL" onAdd={onAdd} />);
+    const onAddTodo = sinon.spy();
+    const component = shallow(<TodoApp todos={todos} visibility="SHOW_ALL" onAddTodo={onAddTodo} />);
     component.find('button').simulate('click');
-    expect(onAdd).to.have.been.called;
+    expect(onAddTodo).to.have.been.called;
   });
 
   it('invokes callback when todo toggled', () => {
-    const onToggle = sinon.spy();
-    const component = shallow(<TodoApp todos={todos} visibility="SHOW_ALL" onToggle={onToggle} />);
+    const onToggleTodo = sinon.spy();
+    const component = shallow(<TodoApp todos={todos} visibility="SHOW_ALL" onToggleTodo={onToggleTodo} />);
     component.find('li').at(1).simulate('click');
-    expect(onToggle).to.have.been.called;
+    expect(onToggleTodo).to.have.been.called;
   });
 });

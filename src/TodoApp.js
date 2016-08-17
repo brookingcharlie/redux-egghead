@@ -16,7 +16,7 @@ class TodoApp extends React.Component {
       <div>
         <input ref={(node) => {this.input = node;}} />
         <button onClick={() => {
-	  this.props.onAdd(this.input.value);
+	  this.props.onAddTodo(this.input.value);
 	  this.input.value = '';
 	}}>Add todo</button>
 	<ul>
@@ -24,7 +24,7 @@ class TodoApp extends React.Component {
             <li
                 key={todo.id}
                 className={todo.completed ? 'completed' : ''}
-                onClick={() => this.props.onToggle(todo.id)}>
+                onClick={() => this.props.onToggleTodo(todo.id)}>
               {todo.text}
             </li>
           )}
