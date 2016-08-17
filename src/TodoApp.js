@@ -34,17 +34,17 @@ class TodoApp extends React.Component {
           <FilterLink
               filter="SHOW_ALL"
               currentFilter={this.props.visibility}
-	      onSetVisibilityFilter={this.props.onSetVisibilityFilter}
+	      onClick={this.props.onSetVisibilityFilter}
 	    >All</FilterLink>{' '}
           <FilterLink
 	      filter="SHOW_ACTIVE"
 	      currentFilter={this.props.visibility}
-	      onSetVisibilityFilter={this.props.onSetVisibilityFilter}
+	      onClick={this.props.onSetVisibilityFilter}
 	    >Active</FilterLink>{' '}
           <FilterLink
 	      filter="SHOW_COMPLETED"
 	      currentFilter={this.props.visibility}
-	      onSetVisibilityFilter={this.props.onSetVisibilityFilter}
+	      onClick={this.props.onSetVisibilityFilter}
 	    >Completed</FilterLink>
         </p>
       </div>

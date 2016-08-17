@@ -1,7 +1,7 @@
 import {expect} from 'chai';
+import {shallow} from 'enzyme';
 import sinon from 'sinon';
 import React from 'react';
-import {shallow} from 'enzyme';
 import TodoApp from '../src/TodoApp'
 
 describe('TodoApp', () => {
