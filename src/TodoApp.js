@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import TodoList from './TodoList';
 import FilterLink from './FilterLink';
 
 class TodoApp extends React.Component {
@@ -19,16 +20,10 @@ class TodoApp extends React.Component {
           this.props.onAddTodo(this.input.value);
           this.input.value = '';
         }}>Add todo</button>
-        <ul>
-          {visibleTodos.map(todo =>
-            <li
-                key={todo.id}
-                className={todo.completed ? 'completed' : ''}
-                onClick={() => this.props.onToggleTodo(todo.id)}>
-              {todo.text}
-            </li>
-          )}
-        </ul>
+        <TodoList
+            todos={visibleTodos}
+	    onToggleTodo={this.props.onToggleTodo}
+	/>
         <p>
           Show:{' '}
           <FilterLink
