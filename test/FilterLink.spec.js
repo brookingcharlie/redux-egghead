@@ -1,8 +1,11 @@
-import {expect} from 'chai';
+import chai, {expect} from 'chai';
 import {shallow} from 'enzyme';
 import sinon from 'sinon';
+import sinonChai from 'sinon-chai';
 import React from 'react';
 import FilterLink from '../src/FilterLink'
+
+chai.use(sinonChai);
 
 describe('FilterLink', () => {
   it('renders text for current filter', () => {
@@ -35,6 +38,6 @@ describe('FilterLink', () => {
       <FilterLink filter="SHOW_ALL" currentFilter="SHOW_ACTIVE" onClick={onClick}>foo</FilterLink>
     );
     component.find('a').simulate('click', {preventDefault: () => null});
-    expect(onClick).to.have.been.called;
+    expect(onClick).to.have.been.calledWith('SHOW_ALL');
   });
 });

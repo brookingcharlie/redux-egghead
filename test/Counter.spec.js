@@ -11,16 +11,16 @@ describe('Counter', () => {
   });
 
   it('invokes callback when increment button clicked', () => {
-    const spy = sinon.spy();
-    const component = shallow(<Counter onIncrement={spy} />);
+    const onIncrement = sinon.spy();
+    const component = shallow(<Counter onIncrement={onIncrement} />);
     component.find('.increment').simulate('click');
-    expect(spy).to.have.been.called;
+    expect(onIncrement).to.have.been.called;
   });
 
   it('invokes callback when decrement button clicked', () => {
-    const spy = sinon.spy();
-    const component = shallow(<Counter onDecrement={spy} />);
+    const onDecrement = sinon.spy();
+    const component = shallow(<Counter onDecrement={onDecrement} />);
     component.find('.decrement').simulate('click');
-    expect(spy).to.have.been.called;
+    expect(onDecrement).to.have.been.called;
   });
 });
