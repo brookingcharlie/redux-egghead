@@ -5,8 +5,6 @@ import React from 'react';
 import Todo from '../src/Todo'
 
 describe('Todo', () => {
-  const todo = {id: 0, text: 'Learn Redux', completed: false};
-
   it('renders active todo', () => {
     const component = shallow(<Todo completed={false} text="foo" />);
     expect(component.find('li').text()).to.equal('foo');
