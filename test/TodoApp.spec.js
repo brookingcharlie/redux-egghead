@@ -13,8 +13,7 @@ describe('TodoApp', () => {
 
   it('renders markup', () => {
     const component = shallow(<TodoApp todos={todos} visibility="SHOW_ALL" />);
-    expect(component.find('input')).to.have.length(1);
-    expect(component.find('button')).to.have.length(1);
+    expect(component.find('AddTodo')).to.have.length(1);
     expect(component.find('TodoList').prop('todos')).to.equal(todos);
     expect(component.find('FilterLink')).to.have.length(3);
   });
@@ -33,12 +32,10 @@ describe('TodoApp', () => {
     });
   });
 
-  // Disabled: Enzyme shallow rendering does not support refs
-  xit('invokes callback when todo added', () => {
-    const onAddTodo = sinon.spy();
+  it('configure add todo callback', () => {
+    const onAddTodo = () => null;
     const component = shallow(<TodoApp todos={todos} visibility="SHOW_ALL" onAddTodo={onAddTodo} />);
-    component.find('button').simulate('click');
-    expect(onAddTodo).to.have.been.called;
+    expect(component.find('AddTodo').prop('onAddTodo')).to.equal(onAddTodo);
   });
 
   it('configures todo toggle callback', () => {

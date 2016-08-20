@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import AddTodo from './AddTodo';
 import TodoList from './TodoList';
 import FilterLink from './FilterLink';
 
@@ -15,11 +16,7 @@ class TodoApp extends React.Component {
     const visibleTodos = getVisibleTodos(this.props.todos, this.props.visibility);
     return (
       <div>
-        <input ref={(node) => {this.input = node;}} />
-        <button onClick={() => {
-          this.props.onAddTodo(this.input.value);
-          this.input.value = '';
-        }}>Add todo</button>
+        <AddTodo onAddTodo={this.props.onAddTodo} />
         <TodoList
             todos={visibleTodos}
 	    onToggleTodo={this.props.onToggleTodo}
