@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import AddTodo from './AddTodo';
 import TodoList from './TodoList';
 import Footer from './Footer';
@@ -19,8 +18,8 @@ class TodoApp extends React.Component {
         <AddTodo onAddTodo={this.props.onAddTodo} />
         <TodoList
             todos={visibleTodos}
-	    onToggleTodo={this.props.onToggleTodo}
-	/>
+            onToggleTodo={this.props.onToggleTodo}
+        />
         <Footer
             visibility={this.props.visibility}
             onSetVisibilityFilter={this.props.onSetVisibilityFilter}

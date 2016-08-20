@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 const FilterLink = ({filter, currentFilter, onClick, children}) => (
   (filter === currentFilter)
