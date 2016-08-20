@@ -15,7 +15,7 @@ describe('TodoApp', () => {
     const component = shallow(<TodoApp todos={todos} visibility="SHOW_ALL" />);
     expect(component.find('AddTodo')).to.have.length(1);
     expect(component.find('TodoList').prop('todos')).to.equal(todos);
-    expect(component.find('FilterLink')).to.have.length(3);
+    expect(component.find('Footer')).to.have.length(1);
   });
 
   describe('applies filter', () => {
@@ -44,7 +44,7 @@ describe('TodoApp', () => {
     expect(component.find('TodoList').prop('onToggleTodo')).to.equal(onToggleTodo);
   });
 
-  it('configures filter links', () => {
+  it('configures footer', () => {
     const onSetVisibilityFilter = () => null;
     const component = shallow(
       <TodoApp
@@ -53,12 +53,7 @@ describe('TodoApp', () => {
         onSetVisibilityFilter={onSetVisibilityFilter}
       />
     );
-    expect(component.find('FilterLink').everyWhere(n =>
-      n.prop('currentFilter') == 'SHOW_ALL' &&
-      n.prop('onClick') == onSetVisibilityFilter
-    )).to.equal(true);
-    expect(component.find('FilterLink').at(0).prop('filter')).to.equal('SHOW_ALL');
-    expect(component.find('FilterLink').at(1).prop('filter')).to.equal('SHOW_ACTIVE');
-    expect(component.find('FilterLink').at(2).prop('filter')).to.equal('SHOW_COMPLETED');
+    expect(component.find('Footer').prop('visibility')).to.equal('SHOW_ALL');
+    expect(component.find('Footer').prop('onSetVisibilityFilter')).to.equal(onSetVisibilityFilter);
   });
 });

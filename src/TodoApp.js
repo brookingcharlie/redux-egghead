@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import AddTodo from './AddTodo';
 import TodoList from './TodoList';
-import FilterLink from './FilterLink';
+import Footer from './Footer';
 
 class TodoApp extends React.Component {
   render() {
@@ -21,24 +21,10 @@ class TodoApp extends React.Component {
             todos={visibleTodos}
 	    onToggleTodo={this.props.onToggleTodo}
 	/>
-        <p>
-          Show:{' '}
-          <FilterLink
-              filter="SHOW_ALL"
-              currentFilter={this.props.visibility}
-              onClick={this.props.onSetVisibilityFilter}
-            >All</FilterLink>{' '}
-          <FilterLink
-              filter="SHOW_ACTIVE"
-              currentFilter={this.props.visibility}
-              onClick={this.props.onSetVisibilityFilter}
-            >Active</FilterLink>{' '}
-          <FilterLink
-              filter="SHOW_COMPLETED"
-              currentFilter={this.props.visibility}
-              onClick={this.props.onSetVisibilityFilter}
-            >Completed</FilterLink>
-        </p>
+        <Footer
+            visibility={this.props.visibility}
+            onSetVisibilityFilter={this.props.onSetVisibilityFilter}
+        />
       </div>
     );
   }
