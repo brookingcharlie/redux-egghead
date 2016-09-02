@@ -4,8 +4,12 @@
   "description": "",
   "main": "src/main.js",
   "scripts": {
+    "build": "webpack",
     "start": "webpack-dev-server",
-    "test": "mocha --compilers js:babel-core/register -r test/setup.js "
+    "test": "npm run test-intro; npm run test-counter; npm run test-todo",
+    "test-intro": "mocha --compilers js:babel-core/register intro/test/",
+    "test-counter": "mocha --compilers js:babel-core/register counter/test/",
+    "test-todo": "mocha --compilers js:babel-core/register -r todo/test/setup.js todo/test/"
   },
   "author": "",
   "license": "ISC",

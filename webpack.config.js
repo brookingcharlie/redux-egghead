@@ -3,18 +3,21 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: {
-    counter: ['babel-polyfill', './src/main-counter.js'],
-    todo: ['babel-polyfill', './src/main-todo.js']
+    counter: ['babel-polyfill', './counter/src/main.js'],
+    todo: ['babel-polyfill', './todo/src/main.js']
   },
   output: {
-    path: path.join(__dirname, 'build'),
-    filename: '[name].js'
+    path: path.join(__dirname),
+    filename: '[name]/build/main.js'
   },
   module: {
     loaders: [{
       test: /\.js$/,
       loaders: ['babel'],
-      include: path.join(__dirname, 'src')
+      include: [
+        path.join(__dirname, 'counter/src'),
+        path.join(__dirname, 'todo/src')
+      ]
     }]
   }
 };

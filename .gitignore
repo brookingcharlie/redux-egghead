@@ -1,4 +1,4 @@
 *.swp
 node_modules
-build/*
-!build/.gitkeep
+*/build/*
+!*/build/.gitkeep
