@@ -1,5 +1,6 @@
 import {expect} from 'chai';
-import {shallow} from 'enzyme';
+import {shallow, mount} from 'enzyme';
+import sinon from 'sinon';
 import React from 'react';
 import AddTodo from '../src/AddTodo';
 
@@ -10,11 +11,12 @@ describe('AddTodo', () => {
     expect(component.find('button')).to.have.length(1);
   });
 
-  // Disabled: Enzyme shallow rendering does not support refs
-  xit('invokes callback when todo added', () => {
-    const onAddTodo = sinon.spy();
-    const component = shallow(<AddTodo onAddTodo={onAddTodo} />);
+  // Use mount since Enzyme shallow rendering does not support refs
+  it('invokes callback when todo added', () => {
+    const store = {dispatch: sinon.stub()};
+    const component = mount(<AddTodo store={store} />);
+    component.find('input').node.value = 'foo';
     component.find('button').simulate('click');
-    expect(onAddTodo).to.have.been.called;
+    expect(store.dispatch).to.have.been.calledWith({type: 'ADD_TODO', id: 0, text: 'foo'});
   });
 });

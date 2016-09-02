@@ -5,7 +5,7 @@
   "main": "src/main.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "test": "mocha --compilers js:babel-core/register"
+    "test": "mocha --compilers js:babel-core/register -r test/setup.js "
   },
   "author": "",
   "license": "ISC",
@@ -24,6 +24,7 @@
     "enzyme": "^2.4.1",
     "eslint": "^3.3.1",
     "eslint-plugin-react": "^6.1.2",
+    "jsdom": "^9.4.5",
     "mocha": "^2.5.3",
     "react-addons-test-utils": "^15.2.1",
     "react-dom": "^15.2.1",
