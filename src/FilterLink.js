@@ -16,8 +16,8 @@ class FilterLink extends React.Component {
     const state = store.getState();
     return (
       <Link
-          active={filter === state.visibilityFilter}
-          onClick={() => store.dispatch({type: 'SET_VISIBILITY_FILTER', filter: filter})}
+          active={filter === state.filter}
+          onClick={() => store.dispatch({type: 'SET_FILTER', filter: filter})}
       >{children}</Link>
     );
   }

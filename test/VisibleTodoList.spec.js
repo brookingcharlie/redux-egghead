@@ -12,28 +12,28 @@ describe('VisibleTodoList', () => {
   ];
 
   it('renders all', () => {
-    const state = {todos: todos, visibility: 'SHOW_ALL'};
+    const state = {todos: todos, filter: 'SHOW_ALL'};
     const store = {getState: () => state};
     const component = shallow(<VisibleTodoList store={store} />);
     expect(component.find('TodoList').prop('todos')).to.eql(todos);
   });
 
   it('renders completed', () => {
-    const state = {todos: todos, visibility: 'SHOW_COMPLETED'};
+    const state = {todos: todos, filter: 'SHOW_COMPLETED'};
     const store = {getState: () => state};
     const component = shallow(<VisibleTodoList store={store} />);
     expect(component.find('TodoList').prop('todos')).to.eql([todos[1]]);
   });
 
   it('renders active', () => {
-    const state = {todos: todos, visibility: 'SHOW_ACTIVE'};
+    const state = {todos: todos, filter: 'SHOW_ACTIVE'};
     const store = {getState: () => state};
     const component = shallow(<VisibleTodoList store={store} />);
     expect(component.find('TodoList').prop('todos')).to.eql([todos[0], todos[2]]);
   });
 
   it('configures callback', () => {
-    const state = {todos: todos, visibility: 'SHOW_ALL'};
+    const state = {todos: todos, filter: 'SHOW_ALL'};
     const store = {getState: () => state, dispatch: sinon.stub()};
     const component = shallow(<VisibleTodoList store={store} />);
     component.find('TodoList').prop('onToggleTodo')(2);

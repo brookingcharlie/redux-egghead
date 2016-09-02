@@ -23,7 +23,7 @@ class VisibleTodoList extends React.Component {
     };
     return (
       <TodoList
-          todos={getVisibleTodos(state.todos, state.visibility)}
+          todos={getVisibleTodos(state.todos, state.filter)}
 	  onToggleTodo={id => store.dispatch({type: 'TOGGLE_TODO', id})}
       />
     );

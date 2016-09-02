@@ -9,7 +9,7 @@ chai.use(sinonChai);
 
 describe('FilterLink', () => {
   it('configures link for current filter', () => {
-    const store = {getState: () => ({visibilityFilter: 'SHOW_ALL'})};
+    const store = {getState: () => ({filter: 'SHOW_ALL'})};
     const component = shallow(
       <FilterLink store={store} filter="SHOW_ALL">
         <div className="child" />
@@ -20,7 +20,7 @@ describe('FilterLink', () => {
   });
 
   it('configures link for non-current filter', () => {
-    const store = {getState: () => ({visibilityFilter: 'SHOW_ACTIVE'})};
+    const store = {getState: () => ({filter: 'SHOW_ACTIVE'})};
     const component = shallow(
       <FilterLink store={store} filter="SHOW_ALL">
         <div className="child" />
@@ -31,13 +31,13 @@ describe('FilterLink', () => {
   });
 
   it('configures link callback', () => {
-    const store = {getState: () => ({visibilityFilter: 'SHOW_ACTIVE'}), dispatch: sinon.spy()};
+    const store = {getState: () => ({filter: 'SHOW_ACTIVE'}), dispatch: sinon.spy()};
     const component = shallow(
       <FilterLink store={store} filter="SHOW_ALL">foo</FilterLink>
     );
     component.find('Link').prop('onClick')();
     expect(store.dispatch).to.have.been.calledWith(
-      {type: 'SET_VISIBILITY_FILTER', filter: 'SHOW_ALL'}
+      {type: 'SET_FILTER', filter: 'SHOW_ALL'}
     );
   });
 });
