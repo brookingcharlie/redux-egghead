@@ -8,36 +8,36 @@ import FilterLink from '../src/FilterLink'
 chai.use(sinonChai);
 
 describe('FilterLink', () => {
-  it('renders text for current filter', () => {
+  it('configures link for current filter', () => {
+    const store = {getState: () => ({visibilityFilter: 'SHOW_ALL'})};
     const component = shallow(
-      <FilterLink filter="SHOW_ALL" currentFilter="SHOW_ALL">
+      <FilterLink store={store} filter="SHOW_ALL">
         <div className="child" />
         <div className="child" />
       </FilterLink>
     );
-    expect(component.find('span')).to.have.length(1);
-    expect(component.find('a')).to.have.length(0);
-    expect(component.find('span .child')).to.have.length(2);
+    expect(component.find('Link').prop('active')).to.equal(true);
   });
 
-  it('renders link for non-current filter', () => {
+  it('configures link for non-current filter', () => {
+    const store = {getState: () => ({visibilityFilter: 'SHOW_ACTIVE'})};
     const component = shallow(
-      <FilterLink filter="SHOW_ALL" currentFilter="SHOW_ACTIVE">
+      <FilterLink store={store} filter="SHOW_ALL">
         <div className="child" />
         <div className="child" />
       </FilterLink>
     );
-    expect(component.find('span')).to.have.length(0);
-    expect(component.find('a')).to.have.length(1);
-    expect(component.find('a .child')).to.have.length(2);
+    expect(component.find('Link').prop('active')).to.equal(false);
   });
 
-  it('invokes callback when link clicked', () => {
-    const onClick = sinon.spy();
+  it('configures link callback', () => {
+    const store = {getState: () => ({visibilityFilter: 'SHOW_ACTIVE'}), dispatch: sinon.spy()};
     const component = shallow(
-      <FilterLink filter="SHOW_ALL" currentFilter="SHOW_ACTIVE" onClick={onClick}>foo</FilterLink>
+      <FilterLink store={store} filter="SHOW_ALL">foo</FilterLink>
     );
-    component.find('a').simulate('click', {preventDefault: () => null});
-    expect(onClick).to.have.been.calledWith('SHOW_ALL');
+    component.find('Link').prop('onClick')();
+    expect(store.dispatch).to.have.been.calledWith(
+      {type: 'SET_VISIBILITY_FILTER', filter: 'SHOW_ALL'}
+    );
   });
 });
