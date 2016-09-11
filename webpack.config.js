@@ -11,13 +11,16 @@ module.exports = {
     filename: '[name]/build/main.js'
   },
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['babel'],
-      include: [
-        path.join(__dirname, 'counter/src'),
-        path.join(__dirname, 'todo/src')
-      ]
-    }]
+    loaders: [
+      {
+        test: /\.js$/,
+        loaders: ['babel'],
+        include: [
+          path.join(__dirname, 'intro'),
+          path.join(__dirname, 'counter'),
+          path.join(__dirname, 'todo')
+        ]
+      }
+    ]
   }
 };

@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "babel-polyfill": "^6.9.1",
+    "babel-polyfill": "^6.13.0",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "redux": "^3.5.2"
@@ -29,10 +29,16 @@
     "eslint": "^3.3.1",
     "eslint-plugin-react": "^6.1.2",
     "jsdom": "^9.4.5",
+    "json-loader": "^0.5.4",
+    "karma": "^1.2.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-mocha": "^1.1.1",
+    "karma-phantomjs-launcher": "^1.0.2",
+    "karma-webpack": "^1.8.0",
     "mocha": "^2.5.3",
     "react-addons-test-utils": "^15.2.1",
     "react-dom": "^15.2.1",
-    "sinon": "^1.17.4",
+    "sinon": "^2.0.0-pre.2",
     "sinon-chai": "^2.8.0",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
