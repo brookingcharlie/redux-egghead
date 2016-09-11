@@ -9,7 +9,8 @@
     "test": "npm run test-intro; npm run test-counter; npm run test-todo",
     "test-intro": "mocha --compilers js:babel-core/register intro/test/",
     "test-counter": "mocha --compilers js:babel-core/register counter/test/",
-    "test-todo": "mocha --compilers js:babel-core/register -r todo/test/setup.js todo/test/"
+    "test-todo": "mocha --compilers js:babel-core/register -r todo/test/setup.js todo/test/",
+    "karma": "karma start --single-run"
   },
   "author": "",
   "license": "ISC",
