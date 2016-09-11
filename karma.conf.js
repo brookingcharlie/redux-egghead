@@ -34,6 +34,7 @@ module.exports = function(config) {
 	    loaders: ['babel']
 	  },
           // Needed due to errors, e.g. Module parse failed: .../*.json Unexpected token (1:4)
+          // Discussion on this issue: https://github.com/webpack/webpack/issues/965
           {
             test: /\.json$/,
             loader: "json-loader"
