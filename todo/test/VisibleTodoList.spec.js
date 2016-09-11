@@ -40,7 +40,6 @@ describe('VisibleTodoList', () => {
     const store = {getState: () => state, dispatch: sinon.spy()};
     const component = shallow(<VisibleTodoList store={store} />);
     component.find('TodoList').prop('onToggleTodo')(2);
-    console.log('store.dispatch', store.dispatch);
     expect(store.dispatch).to.have.been.calledWith({type: 'TOGGLE_TODO', id: 2});
   });
 });
