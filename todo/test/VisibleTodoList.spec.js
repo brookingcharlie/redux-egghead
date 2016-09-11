@@ -1,8 +1,11 @@
-import {expect} from 'chai';
+import chai, {expect} from 'chai';
 import {shallow} from 'enzyme';
 import sinon from 'sinon';
+import sinonChai from 'sinon-chai';
 import React from 'react';
 import VisibleTodoList from '../src/VisibleTodoList'
+
+chai.use(sinonChai);
 
 describe('VisibleTodoList', () => {
   const todos = [
@@ -34,9 +37,10 @@ describe('VisibleTodoList', () => {
 
   it('configures callback', () => {
     const state = {todos: todos, filter: 'SHOW_ALL'};
-    const store = {getState: () => state, dispatch: sinon.stub()};
+    const store = {getState: () => state, dispatch: sinon.spy()};
     const component = shallow(<VisibleTodoList store={store} />);
     component.find('TodoList').prop('onToggleTodo')(2);
+    console.log('store.dispatch', store.dispatch);
     expect(store.dispatch).to.have.been.calledWith({type: 'TOGGLE_TODO', id: 2});
   });
 });
