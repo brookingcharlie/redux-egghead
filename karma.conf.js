@@ -48,6 +48,7 @@ module.exports = function(config) {
       }
     },
     webpackMiddleware: {
+      noInfo: true,
       stats: 'errors-only'
     },
     reporters: ['progress'],
