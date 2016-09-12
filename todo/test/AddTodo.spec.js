@@ -17,7 +17,7 @@ describe('AddTodo', () => {
   // Use mount since Enzyme shallow rendering does not support refs
   it('invokes callback when todo added', () => {
     const store = {dispatch: sinon.spy()};
-    const component = mount(<AddTodo store={store} />);
+    const component = mount(<AddTodo />, {context: {store}});
     component.find('input').node.value = 'foo';
     component.find('button').simulate('click');
     expect(store.dispatch).to.have.been.calledWith({type: 'ADD_TODO', id: 0, text: 'foo'});

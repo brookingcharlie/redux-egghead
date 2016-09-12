@@ -12,9 +12,7 @@ describe('Footer', () => {
   });
 
   it('configures filter links', () => {
-    const store = {};
-    const component = shallow(<Footer store={store} />);
-    expect(component.find('FilterLink').everyWhere(n => n.prop('store') === store)).to.equal(true);
+    const component = shallow(<Footer />);
     expect(component.find('FilterLink').at(0).prop('filter')).to.equal('SHOW_ALL');
     expect(component.find('FilterLink').at(1).prop('filter')).to.equal('SHOW_ACTIVE');
     expect(component.find('FilterLink').at(2).prop('filter')).to.equal('SHOW_COMPLETED');
