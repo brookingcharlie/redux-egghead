@@ -10,6 +10,8 @@ const getVisibleTodos = (todos, filter) => {
   }
 };
 
+const toggleTodo = (id) => ({type: 'TOGGLE_TODO', id});
+
 // Map redux store state to data props of component
 const mapStateToProps = (state) => ({
   todos: getVisibleTodos(state.todos, state.filter)
@@ -17,7 +19,7 @@ const mapStateToProps = (state) => ({
 
 // Map dispatch method of store to callback props of component
 const mapDispatchToProps = (dispatch) => ({
-  onToggleTodo: (id) => {dispatch({type: 'TOGGLE_TODO', id});}
+  onToggleTodo: (id) => {dispatch(toggleTodo(id));}
 });
 
 const VisibleTodoList = connect(mapStateToProps, mapDispatchToProps)(TodoList);
