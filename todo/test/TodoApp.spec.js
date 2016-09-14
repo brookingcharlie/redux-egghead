@@ -5,7 +5,7 @@ import React from 'react';
 import TodoApp from '../src/TodoApp';
 import AddTodo from '../src/AddTodo';
 import VisibleTodoList from '../src/VisibleTodoList';
-import Filter from '../src/Filter';
+import Footer from '../src/Footer';
 
 describe('TodoApp', () => {
   it('renders', () => {

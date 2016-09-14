@@ -1,20 +1,23 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
-const AddTodo = (props, {store}) => {
+let AddTodo = ({dispatch}) => {
   let nextTodoId = 0;
   let input;
   return (
     <div>
       <input ref={(node) => {input = node;}} />
       <button onClick={() => {
-        store.dispatch({type: 'ADD_TODO', id: nextTodoId++, text: input.value})
+        dispatch({type: 'ADD_TODO', id: nextTodoId++, text: input.value})
         input.value = '';
       }}>Add todo</button>
     </div>
   );
 };
-AddTodo.contextTypes = {
-  store: React.PropTypes.object
-};
+
+// Call connect without arguments:
+// - no mapStateToProps implies {}
+// - no mapDispatchToProps implies {dispatch}
+AddTodo = connect()(AddTodo);
 
 export default AddTodo;

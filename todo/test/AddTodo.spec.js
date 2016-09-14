@@ -8,15 +8,18 @@ import AddTodo from '../src/AddTodo';
 chai.use(sinonChai);
 
 describe('AddTodo', () => {
+  // Use double-shallow trick to render inner component
+  // See https://github.com/reactjs/redux/issues/1534#issuecomment-205061049
   it('renders markup', () => {
-    const component = shallow(<AddTodo onAddTodo={() => null} />);
+    const store = {getState: () => ({})};
+    const component = shallow(<AddTodo />, {context: {store}}).shallow();
     expect(component.find('input')).to.have.length(1);
     expect(component.find('button')).to.have.length(1);
   });
 
   // Use mount since Enzyme shallow rendering does not support refs
   it('invokes callback when todo added', () => {
-    const store = {dispatch: sinon.spy()};
+    const store = {getState: () => ({}), dispatch: sinon.spy()};
     const component = mount(<AddTodo />, {context: {store}});
     component.find('input').node.value = 'foo';
     component.find('button').simulate('click');
