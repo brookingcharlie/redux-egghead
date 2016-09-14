@@ -9,7 +9,8 @@ chai.use(sinonChai);
 
 describe('FilterLink', () => {
   it('configures link for current filter', () => {
-    const store = {getState: () => ({filter: 'SHOW_ALL'})};
+    const state = {filter: 'SHOW_ALL'};
+    const store = {getState: () => (state), subscribe: () => null, dispatch: () => null};
     const component = shallow(
       <FilterLink filter="SHOW_ALL">
         <div className="child" />
@@ -21,7 +22,8 @@ describe('FilterLink', () => {
   });
 
   it('configures link for non-current filter', () => {
-    const store = {getState: () => ({filter: 'SHOW_ACTIVE'})};
+    const state = {filter: 'SHOW_ACTIVE'};
+    const store = {getState: () => (state), subscribe: () => null, dispatch: () => null};
     const component = shallow(
       <FilterLink filter="SHOW_ALL">
         <div className="child" />
@@ -33,7 +35,8 @@ describe('FilterLink', () => {
   });
 
   it('configures link callback', () => {
-    const store = {getState: () => ({filter: 'SHOW_ACTIVE'}), dispatch: sinon.spy()};
+    const state = {filter: 'SHOW_ACTIVE'};
+    const store = {getState: () => (state), subscribe: () => null, dispatch: sinon.spy()};
     const component = shallow(
       <FilterLink filter="SHOW_ALL">foo</FilterLink>,
       {context: {store}}
